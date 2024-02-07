@@ -21,9 +21,9 @@ RUN apk update && apk upgrade && apk add --no-cache \
     unzip \
     sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
     /etc/php8/php-fpm.d/www.conf \
-    sed -i "s|listen.owner = nobody|listen.owner = nobody|g" \
+    sed -i "s|;listen.owner = nobody|listen.owner = nobody|g" \
     /etc/php8/php-fpm.d/www.conf \
-    sed -i "s|listen.group = nobody|FROM alpine:3.16
+    sed -i "s|;listen.group = nobody|FROM alpine:3.16
 ARG PHP_VERSION=8 \
     DB_NAME \
     DB_USER \
