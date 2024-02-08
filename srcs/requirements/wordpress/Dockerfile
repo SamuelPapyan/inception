@@ -4,8 +4,8 @@ ARG PHP_VERSION=82 \
     DB_USER \
     DB_PASS
 RUN apk update && apk upgrade && apk add --no-cache \
-    php \
-    php-fpm \
+    php${PHP_VERSION} \
+    php${PHP_VERSION}-fpm \
     php${PHP_VERSION}-mysqli \
     php${PHP_VERSION}-json \
     php${PHP_VERSION}-curl \
