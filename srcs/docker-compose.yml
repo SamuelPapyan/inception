@@ -93,13 +93,6 @@ services:
      - inception
     restart: always
 
-volumes:
-  wp-volume:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/data/wordpress
-
   website:
     build:
       context: .
@@ -108,6 +101,13 @@ volumes:
     ports:
       - "80:80"
     restart: always
+
+volumes:
+  wp-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/data/wordpress
 
   db-volume:
     driver_opts:
