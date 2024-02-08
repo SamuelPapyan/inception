@@ -1,22 +1,22 @@
 FROM alpine:3.19
-ARG PHP_VERSION=8.3 \
+ARG PHP_VERSION=82 \
     DB_NAME \
     DB_USER \
     DB_PASS
 RUN apk update && apk upgrade && apk add --no-cache \
     php \
     php-fpm \
-    php-mysqli \
-    php-json \
-    php-curl \
-    php-dom \
-    php-exif \
-    php-fileinfo \
-    php-mbstring \
-    php-openssl \
-    php-xml \
-    php-zip \
-    php-redis \
+    php${PHP_VERSION}-mysqli \
+    php${PHP_VERSION}-json \
+    php${PHP_VERSION}-curl \
+    php${PHP_VERSION}-dom \
+    php${PHP_VERSION}-exif \
+    php${PHP_VERSION}-fileinfo \
+    php${PHP_VERSION}-mbstring \
+    php${PHP_VERSION}-openssl \
+    php${PHP_VERSION}-xml \
+    php${PHP_VERSION}-zip \
+    php${PHP_VERSION}-redis \
     wget \
     unzip && \
     sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
@@ -34,4 +34,4 @@ RUN wget https://wordpress.org/latest.zip && \
 COPY ./requirements/wordpress/conf/wp-config-create.sh .
 RUN sh wp-config-create.sh && rm wp-config-create.sh && \
     chmod -R 0777 wp-content/
-CMD ["/usr/sbin/php-fpm", "-F"]
+CMD ["/usr/sbin/php-fpm82", "-F"]
